@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello
+  labels:
+    app: hello
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      containers:
+      - name: hello
+        imagePullPolicy: Always
+        image: 992652/hello
+        resources:
+          requests:
+            memory: 1Gi
+            cpu: 700m
+          limits:
+            memory: 2Gi
+            cpu: 1400m
+      imagePullSecrets:
+      - name: hello        
